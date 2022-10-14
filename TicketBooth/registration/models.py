@@ -3,6 +3,8 @@ from django.db import models
 # Create your models here.
 
 
+
+
 class User(models.Model):
     type_user = (('U', 'User'), ('A', 'Admin'))
     username = models.CharField(max_length=15, null=False, primary_key=True)
@@ -26,6 +28,7 @@ class Admin(User):
     def __str__(self):
         self.firstname +" "+self.lastname
 
+
 class Specialization(models.Model):
     admin = models.ForeignKey(Admin, on_delete=models.CASCADE)
     specialization = models.CharField(max_length=50)
@@ -45,6 +48,7 @@ class Concert(models.Model):
     price = models.FloatField(null=False)
     capacity = models.IntegerField(null=False)
 
+
 class Movie(models.Model):
     movieID = models.AutoField(primary_key=True)
     type_room = type_room = (('V', 'VIP'), ('R', 'Regular'))
@@ -57,15 +61,18 @@ class Movie(models.Model):
     price = models.IntegerField(max_length=10, choices=price_choice)
     capacity = models.IntegerField(default=0, null=False)
 
+
 class BookingM(models.Model):
     bookingID = models.AutoField(primary_key=True)
     numberOfSeats = models.IntegerField(null=False)
     movieID = models.ForeignKey(Movie, on_delete=models.CASCADE)
 
+
 class BookingC(models.Model):
     bookingID = models.AutoField(primary_key=True)
     numberOfSeats = models.IntegerField(null=False)
     concertID = models.ForeignKey(Concert, on_delete=models.CASCADE)
+
 
 class TicketM(models.Model):
     ticketID = models.AutoField(primary_key=True)
@@ -97,10 +104,12 @@ class BookingC(models.Model):
     def __str__(self):
         return str(self.bookingID)
 
+
 class CancelM(models.Model):
     dateCancelled = models.DateField(primary_key=True)
     reason = models.CharField(max_length=100, null=False)
     ticketID = models.ForeignKey(TicketM, on_delete=models.CASCADE)
+
 
 class CancelC(models.Model):
     dateCancelled = models.DateField(primary_key=True)
