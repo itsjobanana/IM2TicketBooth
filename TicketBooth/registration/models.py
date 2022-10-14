@@ -54,8 +54,7 @@ class Movie(models.Model):
     dateAvailable = models.DateField()
     timeAired = models.TimeField()
     roomType = models.CharField(max_length=1, choices=type_room)
-    price_choice = (('500', '500'), ('1000', '1000'))
-    price = models.IntegerField(max_length=10, choices=price_choice)
+    price = models.IntegerField(null=False)
     capacity = models.IntegerField(default=0, null=False)
 
 
