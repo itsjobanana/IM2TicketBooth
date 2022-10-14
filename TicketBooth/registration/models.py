@@ -2,9 +2,6 @@ from django.db import models
 
 # Create your models here.
 
-
-
-
 class User(models.Model):
     type_user = (('U', 'User'), ('A', 'Admin'))
     username = models.CharField(max_length=15, null=False, primary_key=True)
@@ -67,11 +64,17 @@ class BookingM(models.Model):
     numberOfSeats = models.IntegerField(null=False)
     movieID = models.ForeignKey(Movie, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return str(self.bookingID)
+
 
 class BookingC(models.Model):
     bookingID = models.AutoField(primary_key=True)
     numberOfSeats = models.IntegerField(null=False)
     concertID = models.ForeignKey(Concert, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return str(self.bookingID)
 
 
 class TicketM(models.Model):
@@ -80,29 +83,12 @@ class TicketM(models.Model):
     status = models.BooleanField(default=False)
     bookingID = models.ForeignKey(BookingM, on_delete=models.CASCADE)
 
+
 class TicketC(models.Model):
     ticketID = models.AutoField(primary_key=True)
     total = models.IntegerField()
     status = models.BooleanField(default=False)
     bookingID = models.ForeignKey(BookingC, on_delete=models.CASCADE)
-
-
-class BookingM(models.Model):
-    bookingID = models.AutoField(primary_key=True)
-    numberOfSeats = models.IntegerField(null=False)
-    movieID = models.ForeignKey(Movie, on_delete=models.CASCADE)
-
-    def __str__(self):
-        return str(self.bookingID)
-
-
-class BookingC(models.Model):
-    bookingID = models.AutoField(primary_key=True)
-    numberOfSeats = models.IntegerField(null=False)
-    concertID = models.ForeignKey(Concert, on_delete=models.CASCADE)
-
-    def __str__(self):
-        return str(self.bookingID)
 
 
 class CancelM(models.Model):
