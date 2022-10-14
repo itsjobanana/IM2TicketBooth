@@ -10,14 +10,14 @@ from .models import *
 # Create your views here.
 
 class ConcertView(View):
-    template = 'concertindex.html'
+    template = 'concertIndex.html'
 
     def get(self, request):
         return render(request, self.template)
 
 
 class RegisterConcert(View):
-    template = 'createconcert.html'
+    template = 'createConcert.html'
 
     def get(self, request):
         form = ConcertForm
@@ -27,7 +27,7 @@ class RegisterConcert(View):
         form = ConcertForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect(reverse('concert:concertindex'))
+            return redirect(reverse('concert:concertIndex'))
         return render(request, self.template, {'form': form})
 
 
@@ -59,4 +59,3 @@ class EditConcert(View):
             form.save()
             return redirect(reverse('concert:concertindex'))
         return render(request, self.template, {'form': form})
-

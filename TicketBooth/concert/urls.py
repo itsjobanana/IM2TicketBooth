@@ -5,7 +5,7 @@ app_name = 'concert'
 
 
 urlpatterns = [
-    path('', views.ConcertView.as_view(),name='concertindex'),
-    path('createconcert', views.RegisterConcert.as_view(),name='createconcert'),
-    path('editConcert', views.EditConcert.as_view(), name='editconcert'),
+    path('', views.ConcertView.as_view(), name='concertIndex'),
+    path('createConcert', views.RegisterConcert.as_view(), name='createConcert'),
+    path('editConcert', views.EditConcert.as_view(), name='editConcert'),
 ]
