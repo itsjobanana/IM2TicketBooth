@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <p> Ticketbooth</p>
+    Username{{request.session.username}} <br>
+    Type{{request.session.type}} <br>
+    {% if request.session.username != '' and request.session.type == 'U'%}
+        <a href="{% url 'registration:edit_profile' %}">Edit Profile</a>
+        <a href="{% url 'registration:logoff' %}">Log Off</a>
+    {%elif request.session.username != '' and request.session.type == 'A' %}
+        <a href="{% url 'registration:edit_profile' %}">Edit Profile</a>
+        <a href="{% url 'registration:logoff' %}">Log Off</a>
+    {% else %}
+        <a href="{% url 'registration:login' %}">Login</a>
+        <a href="{% url 'registration:create_customer' %}">User</a>
+    {% endif %}
