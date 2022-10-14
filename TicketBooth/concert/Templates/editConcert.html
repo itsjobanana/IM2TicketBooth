@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Concert</title>
+</head>
+<body>
+<center>
+    <h1>Edit Concert</h1>
+    <hr/>
+    <table border="1", cellspacing="2">
+        <tr>
+            <td>Concert ID</td>
+            <td><input name="concertID" value="{{Concert.concertID}}" readonly></td>
+        </tr>
+        <tr>
+            <td>Title</td>
+            <td><input type="text" name="title" value="{{Concert.title}}" readonly></td>
+        </tr>
+        <tr>
+            <td>Venue</td>
+            <td><input type="text" name="venue" value="{{Concert.venue}}" readonly></td>
+        </tr>
+        <tr>
+            <td>Date</td>
+            <td><input type="date" name="concertDate" value="{{Concert.concertDate}}" readonly></td>
+        </tr>
+        <tr>
+            <td>Time</td>
+            <td><input type="time" name="timeStart" value="{{Concert.timeStart}}" readonly></td>
+        </tr>
+        <tr>
+            <td>Seat Type</td>
+            <td><input type="text" name="seatType" value="{{Concert.seatType}}" readonly></td>
+        </tr>
+        <tr>
+            <td>Price</td>
+            <td><input type="number" name="price" value="{{Concert.price}}" readonly></td>
+        </tr>
+        <tr>
+            <td>Capacity</td>
+            <td><input type="number" name="capacity" value="{{Concert.capacity}}" readonly></td>
+        </tr>
+    </table>
+    <input type="submit" value="Update"/>
+</center>
+</body>
+</html>

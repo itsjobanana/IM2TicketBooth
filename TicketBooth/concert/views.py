@@ -3,6 +3,7 @@ from django.db import connection
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.views import View
+from django.contrib import messages
 
 from .forms import *
 from .models import *
@@ -46,16 +47,25 @@ class RegisterConcert(View):
         return render(request, self.template, {'form': form})'''
 
 
+class DisplayEdit(View):
+    template = 'displayEdit.html'
+
+    def get(self, request):
+            display = Concert.objects.all()
+            return render(request, self.template, {'Concert': display})
+
+
 class EditConcert(View):
     template = 'editConcert.html'
 
     def get(self, request):
-        form = ConcertForm
-        return render(request, self.template, {'form': form})
+        getdata = Concert.objects.get(concertID=id)
+        return render(request, self.template,{'Concert': getdata})
 
-    def post(self, request):
-        form = ConcertForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect(reverse('concert:concertindex'))
-        return render(request, self.template, {'form': form})
+
+class DisplayConcert(View):
+    template = 'displayConcert.html'
+
+    def get(self, request):
+        display = Concert.objects.all()
+        return render(request, self.template, {'Concert': display})

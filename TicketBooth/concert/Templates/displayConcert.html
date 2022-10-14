@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Concerts</title>
+</head>
+<style>
+.content{
+  max-width: 250px;
+  margin: 50px;
+}
+</style>
+<body>
+  <h1>CONCERTS</h1>
+  <table border="1", cellspacing="2">
+    <tr>
+      <th>Title</th>
+      <th>Venue</th>
+      <th>Date</th>
+      <th>Time</th>
+    </tr>
+    {% for getdata in Concert %}
+    <tr>
+      <td>{{getdata.title}}</td>
+      <td>{{getdata.venue}}</td>
+      <td>{{getdata.concertDate}}</td>
+      <td>{{getdata.timeStart}}</td>
+    </tr>
+    {% endfor %}
+  </table>
+</body>
+</html>

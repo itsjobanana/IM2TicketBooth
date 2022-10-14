@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+.content{
+  max-width: 300px;
+  margin: 50px;
+}
+</style>
+<body>
+<center>
+<h1>Edit Concert</h1>
+    <hr/>
+    <table border="1", cellspacing="2">
+        <tr>
+            <th>Concert ID</th>
+            <th>Title</th>
+            <th>Venue</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Seat Type</th>
+            <th>Price</th>
+            <th>Capacity</th>
+        </tr>
+        {% for getdata in Concert %}
+        <tr>
+            <td>{{getdata.concertID}}</td>
+            <td>{{getdata.title}}</td>
+            <td>{{getdata.venue}}</td>
+            <td>{{getdata.concertDate}}</td>
+            <td>{{getdata.timeStart}}</td>
+            <td>{{getdata.seatType}}</td>
+            <td>{{getdata.price}}</td>
+            <td>{{getdata.capacity}}</td>
+            <td><a href="/editConcert/{{getdata.concertID}}">Edit</a> </td>
+        </tr>
+        {% endfor %}
+    </table>
+    </center>
+</body>
+</html>
