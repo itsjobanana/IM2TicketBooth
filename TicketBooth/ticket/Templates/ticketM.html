@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ticket</title>
+</head>
+<body>
+
+    <form action="" method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+      <input type="submit" value="Confirm">
+      <button><a href="{% url 'ticket:cancel_ticket' %}">Cancel Booking</a> </button>
+  </form>
+
+</body>
+</html>
