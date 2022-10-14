@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.views import View
 
-from TicketBooth.ticket.forms import TicketMForm
+from ticket.forms import TicketMForm
 
 
 # Create your views here.
