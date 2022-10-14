@@ -2,9 +2,7 @@
 from django import forms
 from django.forms import ModelForm
 
-from .models import *
 from registration.models import *
-
 
 class ConcertForm(ModelForm):
     type_seat = (('V', 'VIP'), ('R', 'Regular'))
