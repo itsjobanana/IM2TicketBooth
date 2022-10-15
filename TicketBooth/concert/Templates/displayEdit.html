@@ -35,8 +35,8 @@
             <td>{{c.seatType}}</td>
             <td>{{c.price}}</td>
             <td>{{c.capacity}}</td>
-            <td><a href="{% url 'concert:editConcert' c.concertID %}">Edit</a> </td>
-            <td><a href="{% url 'concert:delete_concert' c.concertID %}">Delete</a> </td>
+            <td><a href="{% url 'concert:editConcert' c.concertID %}"><input type="submit" value="Edit"></a></td>
+            <td><a href="{% url 'concert:delete_concert' c.concertID %}"> <input type="submit" onclick="return confirm('Concert Successfully Deleted!')" value="Delete"></a></td>
         </tr>
         {% endfor %}
     </table>

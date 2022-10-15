@@ -2,46 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Edit Concert</title>
+    <title>Title</title>
 </head>
 <body>
 <center>
-    <h1>Edit Concert</h1>
-    <hr/>
-    <table border="1", cellspacing="2">
-            <td>Title</td>
-            <td><input type="text" name="title" value="{{c.title}}"></td>
-        </tr>
-        <tr>
-            <td>Venue</td>
-            <td><input type="text" name="venue" value="{{c.venue}}"></td>
-        </tr>
-        <tr>
-            <td>Date</td>
-            <td><input type="date" name="concertDate" value="{{c.concertDate}}"></td>
-        </tr>
-        <tr>
-            <td>Time</td>
-            <td><input type="time" name="timeStart" value="{{c.timeStart}}"></td>
-        </tr>
-        <tr>
-            <td>Seat Type</td>
-            <td><input type="text" name="seatType" value="{{c.seatType}}"></td>
-        </tr>
-        <tr>
-            <td>Price</td>
-            <td><input type="number" name="price" value="{{c.price}}"></td>
-        </tr>
-        <tr>
-            <td>Capacity</td>
-            <td><input type="number" name="capacity" value="{{c.capacity}}"></td>
-        </tr>
-    </table>
-    <form action="" method="put">
-    <br>
-    <input type="submit" onclick="return confirm('Concert Updated')" value="Update"/>
-    <br> <br>
-    <a href="{% url 'concert:displayEdit' %}"><input type="submit" value="Back"/> </a>
+    <h1>Edit Profile</h1>
+    <form method="post">
+         {% csrf_token %}
+         {{form.as_p}}
+         <input type="submit" onclick="return confirm('Concert Updated')" value="Update">
     </form>
 </center>
 </body>
