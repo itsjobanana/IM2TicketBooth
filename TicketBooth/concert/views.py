@@ -44,16 +44,18 @@ class EditConcert(View):
     template = 'editConcert.html'
 
     def get(self, request, concertID):
-        concert = Concert.objects.get(pk=concertID)
+        concert = Concert.objects.get( concertID=concertID)
         form = ConcertForm(instance=concert)
-        return render(request, self.template, {'Concert': form})
+        return render(request, self.template, {'form': form})
 
     def post(self, request, concertID):
-        getdata = Concert.objects.get(pk=concertID)
-        form = ConcertForm(instance=getdata)
+        concert = Concert.objects.get(Concert, concertID=concertID)
+        form = ConcertForm(request.PUT, instance=concert)
         if form.is_valid:
             form.save()
-        return render(request, 'displayEdit.html')
+        return redirect(reverse('concert:displayEdit'))
+        return render(request, self.template, {'Concert': concert})
+
 
 class DisplayConcert(View):
     template = 'displayConcert.html'
@@ -66,8 +68,8 @@ class DisplayConcert(View):
 class DeleteConcert(View):
     template = 'editConcert.html'
 
-    def get(self, request, concertID):
-        concert = Concert.objects.get(pk=concertID)
+    def delete(self, request, concertID):
+        concert = Concert.objects.get(concertID=concertID)
         concert.delete(concert)
         cursor = connection.cursor()
         cursor.callproc('ticketbooth.displayConcert')

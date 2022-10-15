@@ -37,8 +37,12 @@
             <td><input type="number" name="capacity" value="{{concert.capacity}}"></td>
         </tr>
     </table>
+    <form action="" method="put">
     <br>
-    <input type="submit" value="Update"/>
+    <input type="submit" onclick="return confirm('Concert Updated')" value="Update"/>
+    <br> <br>
+    <a href="{% url 'concert:displayEdit' %}"><input type="submit" value="Back"/> </a>
+    </form>
 </center>
 </body>
 </html>
