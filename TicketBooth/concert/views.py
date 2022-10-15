@@ -1,3 +1,4 @@
+import cursor as cursor
 from django.db import connection
 
 from django.shortcuts import render, redirect
@@ -44,17 +45,17 @@ class EditConcert(View):
     template = 'editConcert.html'
 
     def get(self, request, concertID):
-        concert = Concert.objects.get( concertID=concertID)
+        concert = Concert.objects.get(pk=int(concertID))
         form = ConcertForm(instance=concert)
         return render(request, self.template, {'form': form})
 
-    def post(self, request, concertID):
-        concert = Concert.objects.get(Concert, concertID=concertID)
+    def post(self, request, id):
+        concert = Concert.objects.get(Concert, concertID=id)
         form = ConcertForm(request.PUT, instance=concert)
         if form.is_valid:
             form.save()
         return redirect(reverse('concert:displayEdit'))
-        return render(request, self.template, {'Concert': concert})
+        return render(request, self.template, {'form': form})
 
 
 class DisplayConcert(View):
@@ -68,10 +69,10 @@ class DisplayConcert(View):
 class DeleteConcert(View):
     template = 'editConcert.html'
 
-    def delete(self, request, concertID):
-        concert = Concert.objects.get(concertID=concertID)
-        concert.delete(concert)
-        cursor = connection.cursor()
-        cursor.callproc('ticketbooth.displayConcert')
+    def get(self, request, id):
+        concert = Concert.objects.get(pk=int(id))
+        form = ConcertForm(instance=concert)
+        concert.delete()
         return redirect(reverse('concert:displayEdit'))
-        return render(request, self.template, {'Concert': concert})
+        return render(request, self.template, {'form': form})
+
