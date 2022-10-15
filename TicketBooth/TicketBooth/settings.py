@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'ticket',
     'movie',
     'concert',
+    'bookticket',
 ]
 
 MIDDLEWARE = [
