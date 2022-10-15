@@ -62,6 +62,7 @@ class BookingM(models.Model):
     bookingID = models.AutoField(primary_key=True)
     numberOfSeats = models.IntegerField(null=False)
     movieID = models.ForeignKey(Movie, on_delete=models.CASCADE)
+    username = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
         return str(self.bookingID)
@@ -71,6 +72,7 @@ class BookingC(models.Model):
     bookingID = models.AutoField(primary_key=True)
     numberOfSeats = models.IntegerField(null=False)
     concertID = models.ForeignKey(Concert, on_delete=models.CASCADE)
+    username = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
         return str(self.bookingID)
