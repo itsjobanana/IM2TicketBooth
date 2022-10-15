@@ -3,8 +3,8 @@ from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.views import View
 
-from registration.models import User, BookingM, Movie
-from ticket.forms import TicketMForm
+from registration.models import User
+from ticket.forms import TicketCForm, TicketMForm
 
 
 # Create your views here.
@@ -50,36 +50,18 @@ class TicketMView(View):
         form = TicketMForm(request.POST)
         if form.is_valid():
             form.save()
-            #return redirect(reverse('ticket:printTicket'))
         return render(request, self.template, {'form': form})
 
 
 class TicketCView(View):
-    template = 'ticketM.html'
+    template = 'ticketC.html'
 
     def get(self, request):
-        form = TicketMForm()
+        form = TicketCForm()
         return render(request, self.template, {'form': form})
 
     def post(self, request):
-        form = TicketMForm(request.POST)
+        form = TicketCForm(request.POST)
         if form.is_valid():
             form.save()
-            #return redirect(reverse('ticket:printTicket'))
-        return render(request, self.template, {'form': form})
-
-
-class CancelM(View):
-    template = 'cancelM.html'
-
-    def get(self, request):
-        form = TicketMForm()
-        return render(request, self.template, {'form': form})
-
-
-class CancelC(View):
-    template = 'cancelC.html'
-
-    def get(self, request):
-        form = TicketMForm()
         return render(request, self.template, {'form': form})
