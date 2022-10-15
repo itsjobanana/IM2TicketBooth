@@ -1,4 +1,3 @@
-from django.db import connection
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.views import View
@@ -44,8 +43,14 @@ class TicketM(View):
     def get(self, request):
         form = TMForm()
         form.fields['bookingID'].queryset= BookingM.objects.filter(username_id = request.session['username'])
+        #form.fields['total'].queryset
         return render(request,self.template,{'form':form})
 
+    def post(self, request):
+        form = TMForm(request.POST)
+        if form.is_valid():
+            form.save()
+        return render(request, self.template, {'form': form})
 
 class TicketC(View):
     template = 'ticketC.html'

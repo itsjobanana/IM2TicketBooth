@@ -7,16 +7,18 @@ from registration.models import TicketC, TicketM, BookingM, BookingC
 class TMForm(ModelForm):
     bookingID = forms.ModelChoiceField(queryset=BookingM.objects.all())
     total = forms.CharField(widget=forms.NumberInput)
+    status = False
 
     class Meta:
         model = TicketM
-        fields = ['bookingID', 'total']
+        fields = ['bookingID', 'total', 'status']
 
 
 class TCForm(ModelForm):
     bookingID = forms.ModelChoiceField(queryset=BookingC.objects.all())
     total = forms.CharField(widget=forms.NumberInput)
+    status = False
 
     class Meta:
         model = TicketC
-        fields = ['bookingID', 'total']
+        fields = ['bookingID', 'total', 'status']
