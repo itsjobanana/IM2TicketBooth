@@ -4,7 +4,7 @@ from django.urls import reverse
 from django.views import View
 
 from registration.models import User
-from ticket.forms import TicketCForm, TicketMForm
+from ticket.forms import TMForm, TCForm
 
 
 # Create your views here.
@@ -35,33 +35,20 @@ class TicketIndex(View):
     template = 'ticketIndex.html'
 
     def get(self, request):
-        form = TicketMForm()
-        return render(request, self.template, {'form': form})
+        return render(request, self.template)
 
 
-class TicketMView(View):
+class TicketM(View):
     template = 'ticketM.html'
 
     def get(self, request):
-        form = TicketMForm()
-        return render(request, self.template, {'form': form})
-
-    def post(self, request):
-        form = TicketMForm(request.POST)
-        if form.is_valid():
-            form.save()
-        return render(request, self.template, {'form': form})
+        form = TMForm()
+        return render(request,self.template,{'form':form})
 
 
-class TicketCView(View):
+class TicketC(View):
     template = 'ticketC.html'
 
     def get(self, request):
-        form = TicketCForm()
-        return render(request, self.template, {'form': form})
-
-    def post(self, request):
-        form = TicketCForm(request.POST)
-        if form.is_valid():
-            form.save()
-        return render(request, self.template, {'form': form})
+        form = TCForm()
+        return render(request,self.template,{'form':form})

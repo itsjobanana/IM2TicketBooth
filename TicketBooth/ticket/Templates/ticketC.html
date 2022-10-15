@@ -6,12 +6,12 @@
 </head>
 <body>
 
-    <form action="" method="post">
-    {% csrf_token %}
-    {{form.as_p}}
-      <input type="submit" value="Confirm">
-      <button><a href="{% url 'ticket:cancel_C' %}">Cancel Booking</a> </button>
-  </form>
+  <form action="" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <input type="submit" value="Confirm">
+    </form>
 
 </body>
 </html>
