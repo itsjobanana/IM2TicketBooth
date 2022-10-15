@@ -32,37 +32,28 @@ class RegisterConcert(View):
         return render(request, self.template, {'form': form})
 
 
-'''class RegisterSeat(View):
-    template = 'seattype.html'
-
-    def get(self, request):
-        form = ConcertSeatForm
-        return render(request, self.template, {'form': form})
-
-    def post(self, request):
-        form = ConcertSeatForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect(reverse('concert:concertindex'))
-        return render(request, self.template, {'form': form})'''
-
-
 class DisplayEdit(View):
     template = 'displayEdit.html'
 
     def get(self, request):
-            display = Concert.objects.all()
-            return render(request, self.template, {'Concert': display})
+        display = Concert.objects.all()
+        return render(request, self.template, {'Concert': display})
 
 
 class EditConcert(View):
     template = 'editConcert.html'
 
     def get(self, request, concertID):
-        getdata = Concert.objects.get(concertID=concertID)
+        getdata = Concert.objects.get(pk=int(concertID))
         form = ConcertForm(instance=getdata)
-        return render(request, self.template, {'Concert': form})
+        return render(request, self.template, {'form': form})
 
+    def post(self, request, concertID):
+        getdata = Concert.objects.get(pk=int(concertID))
+        form = ConcertForm(instance=getdata)
+        if form.is_valid:
+            form.save()
+        return render(request, 'displayEdit.html')
 
 class DisplayConcert(View):
     template = 'displayConcert.html'
@@ -76,7 +67,8 @@ class DeleteConcert(View):
     template = 'editConcert.html'
 
     def delete(self, request, concertID):
-        delete = Concert.objects.get(concertID=concertID)
-        delete.delete()
-        display = Concert.objects.all()
-        return render(request, self.template, {'Concert': display})
+        concert = Concert.objects.get(pk=int(concertID))
+        concert.remove(concert)
+        cursor = connection.cursor()
+        cursor.callproc('ticketbooth.displayConcert')
+        return render(request, self.template, {'Concert': concert})

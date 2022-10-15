@@ -16,7 +16,7 @@
     <form action="" method="post">
         {% csrf_token %}
     {{form.as_p}}
-    <input type="submit" value="ADD">
+    <input type="submit" onclick="return confirm('Concert Successfully Added!')" value="ADD">
     </form>
     </div>
     </center>
