@@ -58,14 +58,25 @@ class DisplayEdit(View):
 class EditConcert(View):
     template = 'editConcert.html'
 
-    def get(self, request):
-        getdata = Concert.objects.get(concertID=id)
-        return render(request, self.template,{'Concert': getdata})
+    def get(self, request, concertID):
+        getdata = Concert.objects.get(concertID=concertID)
+        form = ConcertForm(instance=getdata)
+        return render(request, self.template, {'Concert': form})
 
 
 class DisplayConcert(View):
     template = 'displayConcert.html'
 
     def get(self, request):
+        display = Concert.objects.all()
+        return render(request, self.template, {'Concert': display})
+
+
+class DeleteConcert(View):
+    template = 'editConcert.html'
+
+    def delete(self, request, concertID):
+        delete = Concert.objects.get(concertID=concertID)
+        delete.delete()
         display = Concert.objects.all()
         return render(request, self.template, {'Concert': display})

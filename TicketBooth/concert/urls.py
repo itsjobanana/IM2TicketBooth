@@ -10,4 +10,5 @@ urlpatterns = [
     path('displayEdit', views.DisplayEdit.as_view(), name='displayEdit'),
     path('editConcert/<int:concertID>', views.EditConcert.as_view(), name='editConcert'),
     path('displayConcert', views.DisplayConcert.as_view(), name='displayConcert'),
+    path('delete/<int:concertID>', views.DeleteConcert.as_view(), name='editConcert'),
 ]
