@@ -4,19 +4,19 @@ from django.forms import ModelForm
 from registration.models import TicketC, TicketM, BookingM, BookingC
 
 
-class TCForm(ModelForm):
+class TMForm(ModelForm):
     bookingID = forms.ModelChoiceField(queryset=BookingM.objects.all())
     total = forms.CharField(widget=forms.NumberInput)
 
     class Meta:
-        model = TicketC
+        model = TicketM
         fields = ['bookingID', 'total']
 
 
-class TMForm(ModelForm):
+class TCForm(ModelForm):
     bookingID = forms.ModelChoiceField(queryset=BookingC.objects.all())
     total = forms.CharField(widget=forms.NumberInput)
 
     class Meta:
-        model = TicketM
+        model = TicketC
         fields = ['bookingID', 'total']

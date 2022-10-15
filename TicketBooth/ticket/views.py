@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.views import View
 
-from registration.models import User
+from registration.models import User, BookingM, BookingC
 from ticket.forms import TMForm, TCForm
 
 
@@ -43,6 +43,7 @@ class TicketM(View):
 
     def get(self, request):
         form = TMForm()
+        form.fields['bookingID'].queryset= BookingM.objects.filter(username_id = request.session['username'])
         return render(request,self.template,{'form':form})
 
 
@@ -51,4 +52,5 @@ class TicketC(View):
 
     def get(self, request):
         form = TCForm()
+        form.fields['bookingID'].queryset = BookingC.objects.filter(username_id=request.session['username'])
         return render(request,self.template,{'form':form})
