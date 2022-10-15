@@ -17,14 +17,3 @@ class ConcertForm(ModelForm):
     class Meta:
         model = Concert
         fields = ['title', 'venue', 'concertDate', 'timeStart', 'seatType', 'price', 'capacity']
-
-
-'''class ConcertSeatForm(ModelForm):
-    type_seat = (('V', 'VIP'), ('R', 'Regular'))
-    seatType = forms.CharField(widget=forms.Select(choices=type_seat))
-    price = forms.FloatField(widget=forms.NumberInput)
-    capacity = forms.IntegerField(widget=forms.NumberInput)
-
-    class Meta:
-        model = ConcertSeat
-        fields =['seatType', 'price', 'capacity']'''

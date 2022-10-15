@@ -12,12 +12,14 @@
 <body>
 <center>
 <div class="content">
-    <p> CREATE CONCERT </p>
+    <h1>CREATE CONCERT</h1>
     <form action="" method="post">
         {% csrf_token %}
     {{form.as_p}}
     <input type="submit" onclick="return confirm('Concert Successfully Added!')" value="ADD">
     </form>
+    <br>
+    <a href="{% url 'concert:concertIndex' %}"><input type="submit" value="Back"/> </a>
     </div>
     </center>
 </body>
