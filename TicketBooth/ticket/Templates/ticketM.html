@@ -6,12 +6,13 @@
 </head>
 <body>
 
+    <div align="center">
     <form action="" method="post">
         {% csrf_token %}
         {{ form.as_p }}
-
         <input type="submit" value="Confirm">
     </form>
+        </div>
 
 </body>
 </html>

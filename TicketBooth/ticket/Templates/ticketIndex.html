@@ -2,12 +2,19 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Ticket</title>
+<style>
+    .content{
+  max-width: 1400px;
+  margin: 50px;
+}
+</style>
 </head>
 <body>
-
+    <div class="content" align="center">
+    <h1>TICKET</h1>
     <a href="{% url 'ticket:ticket_M' %}">Pay Movie Ticket</a>
         <a href="{% url 'ticket:ticket_C' %}">Pay Concert Ticket</a>
-
+     </div>
 </body>
 </html>

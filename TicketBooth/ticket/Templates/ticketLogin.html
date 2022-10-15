@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Log In</title>
 </head>
 <body>
 <div>
@@ -10,6 +10,8 @@
         {{msg}}
     {% endif %}
 </div>
+
+     <div align="center">
     <form method="post">
         {% csrf_token %}
         <pre>
@@ -18,5 +20,6 @@
             <input type="submit" value="login">
         </pre>
     </form>
+     </div>
 </body>
 </html>
