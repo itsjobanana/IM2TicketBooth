@@ -53,7 +53,7 @@ class Login(View):
 
         return render(request, self.template,{'msg':'Incorrect username/ password.'})
 
-class LogOff(View):
+class LogOut(View):
     def get(self, request):
         try:
             del request.session['username']

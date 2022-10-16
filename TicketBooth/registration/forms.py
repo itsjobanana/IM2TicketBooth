@@ -32,8 +32,8 @@ class AdminForm(ModelForm):
     middlename = forms.CharField(widget=forms.TextInput)
     lastname = forms.CharField(widget=forms.TextInput)
     type = 'A'
-    age = forms.IntegerField(widget=forms.NumberInput)
+
 
     class Meta:
         model = Admin
-        fields = ['password', 'firstname', 'middlename', 'lastname', 'age']
+        fields = ['password', 'firstname', 'middlename', 'lastname',]
