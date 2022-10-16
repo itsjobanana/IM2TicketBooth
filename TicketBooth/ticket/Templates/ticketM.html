@@ -4,15 +4,53 @@
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
+
+<style>
+    .button{
+    text-align: center;
+  color: black;
+  text-decoration: none;
+    }
+</style>
+
 <body>
 
-    <div align="center">
+
+    <div align="left">
     <form action="" method="post">
         {% csrf_token %}
         {{ form.as_p }}
         <input type="submit" value="Confirm">
     </form>
         </div>
+    <br>
 
+    <table border="1" cellspacing="2">
+        <tr>
+            <th>Booking ID</th>
+            <th>Title</th>
+            <th>Date Available</th>
+            <th>Time Aired
+            <th>Room Type</th>
+            <th>Price</th>
+            <th>Number of Seats</th>
+            <th>Total</th>
+        </tr>
+        {% for t in tickets %}
+        <tr>
+            <td>{{t.0}}</td>
+            <td>{{t.1}}</td>
+            <td>{{t.2}}</td>
+            <td>{{t.3}}</td>
+            <td>{{t.4}}</td>
+            <td>{{t.5}}</td>
+            <td>{{t.6}}</td>
+            <td>{{t.7}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <br>
+    <button><a href="{% url 'ticket:ticket_index' %}"  class="button"> Back </button>
 </body>
 </html>

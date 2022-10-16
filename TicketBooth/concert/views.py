@@ -1,4 +1,4 @@
-import cursor as cursor
+#import cursor as cursor
 from django.db import connection
 
 from django.shortcuts import render, redirect

@@ -65,7 +65,7 @@ class BookingM(models.Model):
     username = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
-        return str(self.bookingID)
+        return 'Booking ID: ' + str(self.bookingID)
 
 
 class BookingC(models.Model):
@@ -75,19 +75,17 @@ class BookingC(models.Model):
     username = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
-        return str(self.bookingID)
+        return 'Booking ID: ' + str(self.bookingID)
 
 
 class TicketM(models.Model):
     ticketID = models.AutoField(primary_key=True)
-    total = models.IntegerField()
     status = models.BooleanField(default=False)
     bookingID = models.ForeignKey(BookingM, on_delete=models.CASCADE)
 
 
 class TicketC(models.Model):
     ticketID = models.AutoField(primary_key=True)
-    total = models.IntegerField()
     status = models.BooleanField(default=False)
     bookingID = models.ForeignKey(BookingC, on_delete=models.CASCADE)
 
