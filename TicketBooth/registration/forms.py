@@ -16,15 +16,7 @@ class CustomerForm(ModelForm):
     def __init__(self, *args, **kwargs):
         super(CustomerForm, self).__init__(*args, **kwargs)
         self.instance.type = self.type
-        self.fields['middlename'].required = False,
-
-    def __init__(self, *args, **kwargs):
-        super(CustomerForm, self).__init__(*args, **kwargs)
-        self.instance.type = self.type
-        self.fields['address'].required = True,
-
-
-
+        self.fields['middlename'].required = False
 
     def clean_password(self):
         password = self.data.get('password')
