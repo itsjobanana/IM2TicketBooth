@@ -3,11 +3,11 @@ from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.views import View
 
-from registration.models import User, BookingM, BookingC, Movie
+from registration.models import User, BookingM, BookingC, TicketC
 from ticket.forms import TMForm, TCForm
 
-
 # Create your views here.
+
 
 class Login(View):
     template = 'ticketLogin.html'
@@ -41,14 +41,9 @@ class TicketIndex(View):
 class TicketM(View):
     template = 'ticketM.html'
 
-
     def get(self, request):
         form = TMForm()
         form.fields['bookingID'].queryset= BookingM.objects.filter(username_id = request.session['username'])
-        cursor = connection.cursor()
-        cursor.callproc('ticketbooth.displayBookingMOfUser', [request.session['username']])
-        #bookings = cursor.fetchall()
-        cursor.close()
         return render(request,self.template,{'form':form})
 
     def post(self, request):
@@ -59,7 +54,7 @@ class TicketM(View):
             tickets = cursor.fetchall()
             cursor.close()
             form.save()
-        return render(request, self.template, {'form': form, 'tickets': tickets})
+        return render(request, self.template, {'form': form, 'tickets':tickets})
 
 
 class TicketC(View):
@@ -69,3 +64,13 @@ class TicketC(View):
         form = TCForm()
         form.fields['bookingID'].queryset = BookingC.objects.filter(username_id=request.session['username'])
         return render(request,self.template,{'form':form})
+
+    def post(self, request):
+        form = TCForm(request.POST)
+        if form.is_valid():
+            cursor = connection.cursor()
+            cursor.callproc('ticketbooth.displayTicketCOfUser', [request.session['username']])
+            tickets = cursor.fetchall()
+            cursor.close()
+            form.save()
+        return render(request, self.template, {'form': form, 'tickets': tickets})

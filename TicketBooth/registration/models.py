@@ -80,14 +80,12 @@ class BookingC(models.Model):
 
 class TicketM(models.Model):
     ticketID = models.AutoField(primary_key=True)
-    total = models.IntegerField()
     status = models.BooleanField(default=False)
     bookingID = models.ForeignKey(BookingM, on_delete=models.CASCADE)
 
 
 class TicketC(models.Model):
     ticketID = models.AutoField(primary_key=True)
-    total = models.IntegerField()
     status = models.BooleanField(default=False)
     bookingID = models.ForeignKey(BookingC, on_delete=models.CASCADE)
 
