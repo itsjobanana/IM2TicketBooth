@@ -59,19 +59,21 @@ a:hover, a:active {
 </style>
 </head>
 <body>
-    <p style="font-size:50px;">Ticketbooth</p>
-    Username: {{request.session.username}} <br>
-    Type: {{request.session.type}} <br><br>
+    <p>Ticketbooth</p>
+    Username{{request.session.username}} <br>
+    Type{{request.session.type}} <br>
     {% if request.session.username != '' and request.session.type == 'U'%}
-        <a href="{% url 'registration:concertmovie' %}">Choose Concert or Movie</a> <br> <br>
-        <a href="{% url 'registration:editProfile' %}">Edit Profile</a> <br> <br>
-        <a href="{% url 'registration:logout' %}">Log Out</a> <br> <br>
+    <br>
+        <a href="{% url 'registration:concertmovie' %}">Choose Concert or Movie</a>
+    <br>
+        <a href="{% url 'registration:editProfile' %}">Edit Profile</a>
+    <br>
+        <a href="{% url 'registration:logoff' %}">Log Off</a>
     {%elif request.session.username != '' and request.session.type == 'A' %}
-        <a href="{% url 'concert:concertIndex' %}">Concert</a> <br> <br>
-        <a href="{% url 'registration:editProfile' %}">Edit Profile</a> <br> <br>
-        <a href="{% url 'registration:logout' %}">Log Out</a> <br> <br>
+        <a href="{% url 'concert:concertIndex' %}">Concert</a>
+        <a href="{% url 'registration:editProfile' %}">Edit Profile</a>
+        <a href="{% url 'registration:logoff' %}">Log Off</a>
     {% else %}
-        <a href="{% url 'registration:login' %}">Login</a> <br> <br>
-        <a href="{% url 'registration:create_customer' %}">Sign Up</a> <br> <br>
-
+        <a href="{% url 'registration:login' %}">Login</a>
+        <a href="{% url 'registration:create_customer' %}">Add</a>
     {% endif %}

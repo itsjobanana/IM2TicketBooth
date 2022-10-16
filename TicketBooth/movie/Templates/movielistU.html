@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>TITLE</title>
+    <title>Movies</title>
     <style>
-     body {
+   body {
             background: #fff7b7;
             display: flex;
             align-items: center;
@@ -26,11 +26,6 @@
             text-align: center;
             margin-bottom: 40px;
             color: #5c4848;
-        }
-        label {
-            color: #5c4848;
-            font-size: 20px;
-            padding: 15px;
         }
             input {
             display: block;
@@ -61,15 +56,51 @@
 a:hover, a:active {
   background-color: #ffd084;
 }
+table, th, td {
+  border: 2px solid #000;
+  text-align: center;
+  }
+table {
+  border-collapse: collapse;
+  width: 65%;
+}
+th, td {
+  padding: 10px;
+}
+th {
+  background: #5c4848;
+  border: 2px solid #000;
+  color: #fff;
+}
+
 </style>
 </head>
 <body>
-<h1>Choose what you want to book.</h1>
-    <a href="{% url 'concert:displayConcert' %}">Concert</a>
+<h1>List of Available Movies</h1>
+  <table border="1", cellspacing="2">
+    <tr>
+      <th>Title</th>
+      <th>Room Number</th>
+      <th>Date Available</th>
+      <th>Time</th>
+      <th>Room Type</th>
+      <th>Price</th>
+    </tr>
+    {% for m in Movie %}
+    <tr>
+      <td>{{m.title}}</td>
+      <td>{{m.roomNum}}</td>
+      <td>{{m.dateAvailable}}</td>
+      <td>{{m.timeAired}}</td>
+      <td>{{m.roomType}}</td>
+      <td>{{m.price}}</td>
+    </tr>
+    {% endfor %}
+  </table>
 <br>
-    <a href="{% url 'movie:movielistU' %}">Movie</a>
 <br>
+  <a href="#"> Book Now </a>
 <br>
-    <a href="{% url 'registration:index' %}">Go to Profile</a>
+  <a href="{% url 'registration:concertmovie' %}"> Cancel </a>
 </body>
 </html>
