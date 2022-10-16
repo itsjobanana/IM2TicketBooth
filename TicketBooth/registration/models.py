@@ -44,6 +44,10 @@ class Concert(models.Model):
     seatType = models.CharField(max_length=10, choices=type_seat)
     price = models.FloatField(null=False)
     capacity = models.IntegerField(null=False)
+    user = models.ManyToManyField(Customer, related_name='attend', through='BookingC')
+
+    def __str__(self):
+        return self.title +', Date of Event: '+str(self.concertDate)
 
 
 class Movie(models.Model):
@@ -57,22 +61,29 @@ class Movie(models.Model):
     price = models.IntegerField(null=False)
     capacity = models.IntegerField(default=0, null=False)
 
+    def __str__(self):
+        return self.title +', Date of Event: '+str(self.dateAvailable)
+
 
 class BookingM(models.Model):
+    movieUser = models.ForeignKey(User, on_delete=models.CASCADE)
     bookingID = models.AutoField(primary_key=True)
     numberOfSeats = models.IntegerField(null=False)
     movieID = models.ForeignKey(Movie, on_delete=models.CASCADE)
-    username = models.ForeignKey(User, on_delete=models.CASCADE)
+    status = models.BooleanField(default=False)
+    roomType = models.CharField(max_length=5, null=False)
 
     def __str__(self):
         return 'Booking ID: ' + str(self.bookingID)
 
 
 class BookingC(models.Model):
+    concertUser = models.ForeignKey(Customer, on_delete=models.CASCADE)
     bookingID = models.AutoField(primary_key=True)
     numberOfSeats = models.IntegerField(null=False)
     concertID = models.ForeignKey(Concert, on_delete=models.CASCADE)
-    username = models.ForeignKey(User, on_delete=models.CASCADE)
+    status = models.BooleanField(default=False)
+    seatType = models.CharField(max_length=10, null=False)
 
     def __str__(self):
         return 'Booking ID: ' + str(self.bookingID)

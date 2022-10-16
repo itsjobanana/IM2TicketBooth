@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Display Concert</title>
+</head>
+<body>
+<h2>Registered Concert</h2>
+    {{request.session.username}}
+    <table cellspacing="2" border="1">
+        <th>Concert Name</th>
+        <th>Date of Concert</th>
+        <th>Status</th>
+    {% for c in concert %}
+        <tr>
+            <td>{{c.title}}</td>
+            <td>{{c.concertdate}}</td>
+            <td>P{{c.status}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
