@@ -59,16 +59,17 @@ a:hover, a:active {
 </style>
 </head>
 <body>
-    <p> Ticketbooth</p>
+    <p>Ticketbooth</p>
     Username{{request.session.username}} <br>
     Type{{request.session.type}} <br>
     {% if request.session.username != '' and request.session.type == 'U'%}
         <a href="{% url 'registration:concertmovie' %}">Choose Concert or Movie</a>
-        <a href="{% url 'registration:edit_profile' %}">Edit Profile</a>
-        <a href="{% url 'registration:logout' %}">Log Out</a>
+        <a href="{% url 'registration:editProfile' %}">Edit Profile</a>
+        <a href="{% url 'registration:logoff' %}">Log Off</a>
     {%elif request.session.username != '' and request.session.type == 'A' %}
-        <a href="{% url 'registration:edit_profile' %}">Edit Profile</a>
-        <a href="{% url 'registration:logout' %}">Log Out</a>
+        <a href="{% url 'concert:concertIndex' %}">Concert</a>
+        <a href="{% url 'registration:editProfile' %}">Edit Profile</a>
+        <a href="{% url 'registration:logoff' %}">Log Off</a>
     {% else %}
         <a href="{% url 'registration:login' %}">Login</a>
         <a href="{% url 'registration:create_customer' %}">Add</a>

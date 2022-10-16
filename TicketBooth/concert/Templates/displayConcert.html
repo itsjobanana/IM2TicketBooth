@@ -8,7 +8,7 @@
             background: #fff7b7;
             display: flex;
             align-items: center;
-            height: 100vh;
+            height: 150vh;
             flex-direction: column;
         }
         *{
@@ -77,8 +77,11 @@ th {
 </head>
 <body>
   <h1>CONCERTS</h1>
+      USERNAME: &nbsp;{{request.session.username}} <br>
+      TYPE: &nbsp;{{request.session.type}} <br> <br>
   <table border="1", cellspacing="2">
     <tr>
+      <th>ConcertID</th>
       <th>Concert Name</th>
       <th>Artist</th>
       <th>Venue</th>
@@ -89,6 +92,7 @@ th {
     </tr>
     {% for c in Concert %}
     <tr>
+      <td>{{c.concertID}}</td>
       <td>{{c.concertName}}</td>
       <td>{{c.artist}}</td>
       <td>{{c.venue}}</td>
@@ -102,5 +106,6 @@ th {
   <br> <br>
   <center>
       <a href="#">Book Concert</a>
+  </center>
 </body>
 </html>

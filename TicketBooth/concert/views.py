@@ -33,7 +33,6 @@ class RegisterConcert(View):
         return render(request, self.template, {'form': form})
 
 
-
 class DisplayEdit(View):
     template = 'displayEdit.html'
 
