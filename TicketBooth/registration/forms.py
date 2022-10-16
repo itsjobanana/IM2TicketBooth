@@ -33,10 +33,11 @@ class CustomerForm(ModelForm):
         super(CustomerForm, self).__init__(*args, **kwargs)
         self.instance.type = self.type
         self.fields['firstname'].required = True
+
     def __init__(self, *args, **kwargs):
-        super(CustomerForm, self).__init__(*args, **kwargs)
+        super(RegisterForm, self).__init__(*args, **kwargs)
         self.instance.type = self.type
-        self.fields['middlename'].required = False
+        self.fields['middleName'].required = False
 
     def __init__(self, *args, **kwargs):
         super(CustomerForm, self).__init__(*args, **kwargs)
