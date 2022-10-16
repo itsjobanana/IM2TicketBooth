@@ -20,12 +20,12 @@
       <th>Date</th>
       <th>Time</th>
     </tr>
-    {% for concert in Concert %}
+    {% for c in Concert %}
     <tr>
-      <td>{{concert.title}}</td>
-      <td>{{concert.venue}}</td>
-      <td>{{concert.concertDate}}</td>
-      <td>{{concert.timeStart}}</td>
+      <td>{{c.title}}</td>
+      <td>{{c.venue}}</td>
+      <td>{{c.concertDate}}</td>
+      <td>{{c.timeStart}}</td>
     </tr>
     {% endfor %}
   </table>
