@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Concerts</title>
-  <style>
-   body {
+    <title>TITLE</title>
+    <style>
+     body {
             background: #fff7b7;
             display: flex;
             align-items: center;
@@ -26,6 +26,11 @@
             text-align: center;
             margin-bottom: 40px;
             color: #5c4848;
+        }
+        label {
+            color: #5c4848;
+            font-size: 20px;
+            padding: 15px;
         }
             input {
             display: block;
@@ -56,51 +61,10 @@
 a:hover, a:active {
   background-color: #ffd084;
 }
-table, th, td {
-  border: 2px solid #000;
-  text-align: center;
-  }
-table {
-  border-collapse: collapse;
-  width: 65%;
-}
-th, td {
-  padding: 10px;
-}
-th {
-  background: #5c4848;
-  border: 2px solid #000;
-  color: #fff;
-}
-
 </style>
 </head>
 <body>
-  <h1>CONCERTS</h1>
-  <table border="1", cellspacing="2">
-    <tr>
-      <th>Concert Name</th>
-      <th>Artist</th>
-      <th>Venue</th>
-      <th>Date</th>
-      <th>Time</th>
-      <th>Seat Type</th>
-      <th>Price</th>
-    </tr>
-    {% for c in Concert %}
-    <tr>
-      <td>{{c.concertName}}</td>
-      <td>{{c.artist}}</td>
-      <td>{{c.venue}}</td>
-      <td>{{c.concertDate}}</td>
-      <td>{{c.timeStart}}</td>
-      <td>{{c.seatType}}</td>
-      <td>{{c.price}}</td>
-    </tr>
-    {% endfor %}
-  </table>
-  <br> <br>
-  <center>
-      <a href="#">Book Concert</a>
+<h1>CHOOSE CONCERT OR MOVIE</h1>
+    <a href="{% url 'concert:displayConcert' %}">CONCERT</a>
 </body>
 </html>

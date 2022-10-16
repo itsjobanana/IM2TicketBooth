@@ -1,8 +1,9 @@
-
 from django import forms
+from django.core.exceptions import NON_FIELD_ERRORS
 from django.forms import ModelForm
 
 from registration.models import *
+
 
 class ConcertForm(ModelForm):
     type_seat = (('V', 'VIP'), ('R', 'Regular'))
@@ -25,7 +26,11 @@ class ConcertForm(ModelForm):
     class Meta:
         model = Concert
         fields = ['concertName', 'artist', 'venue', 'concertDate', 'timeStart', 'seatType', 'price', 'capacity']
-
+        error_messages = {
+            NON_FIELD_ERRORS: {
+                'unique_together': "This concert was already made.",
+            }
+        }
 
 class EditConcertForm(ModelForm):
     type_seat = (('V', 'VIP'), ('R', 'Regular'))
@@ -48,3 +53,8 @@ class EditConcertForm(ModelForm):
     class Meta:
         model = Concert
         fields = ['concertName', 'artist', 'venue', 'concertDate', 'timeStart', 'seatType', 'price', 'capacity']
+        error_messages = {
+            NON_FIELD_ERRORS: {
+                'unique_together': "This concert was already made.",
+            }
+        }

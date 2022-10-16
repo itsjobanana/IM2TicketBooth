@@ -86,3 +86,10 @@ class EditProfile(View):
         if form.is_valid:
             form.save()
         return render(request, 'index.html')
+
+
+class ChooseView(View):
+    template = 'concertmovie.html'
+
+    def get(self, request):
+        return render(request, self.template)
