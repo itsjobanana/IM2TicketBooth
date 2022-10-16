@@ -1,10 +1,40 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Concert Booking</title>
 </head>
 <body>
-
+<h2>Concert Booking Form</h2>
+    {{request.session.username}}
+    <br>
+    {{errorMsg}}
+    <form method="post">
+        {% csrf_token %}
+        {{form}}
+        <input type="submit" value="Attend">
+    </form>
+<br>
+    <table border="1" cellspacing="2">
+    <tr>
+        <th>Concert</th>
+        <th>Venue</th>
+        <th>Concert Date</th>
+        <th>Concert Time</th>
+        <th>Price</th>
+        <th>Capacity</th>
+    </tr>
+        {% for c in concert %}
+        <tr>
+            <td>{{c.title}}</td>
+            <td>{{c.venue}}</td>
+            <td>{{c.concertDate}}</td>
+            <td>{{c.timeStart}}</td>
+            <td>{{c.price}}</td>
+            <td>{{c.capacity}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+<br>
+<a href="{% url 'bookticket:bookTicket_Index' %}">Return</a>
 </body>
 </html>

@@ -1,10 +1,38 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Movie Booking</title>
 </head>
 <body>
-
+<h2>Movie Booking Form</h2>
+    {{request.session.username}}
+    <br>
+    {{errorMsg}}
+    <form method="post">
+        {% csrf_token %}
+        {{form}}
+        <input type="submit" value="Attend">
+    </form>
+<br>
+    <table border="1" cellspacing="2">
+        <tr>
+            <th>Movie</th>
+            <th>Movie Date</th>
+            <th>Movie Time</th>
+            <th>Price</th>
+            <th>Capacity</th>
+        </tr>
+        {% for m in movies %}
+        <tr>
+            <td>{{m.title}}</td>
+            <td>{{m.dateAvailable}}</td>
+            <td>{{m.timeAired}}</td>
+            <td>{{m.price}}</td>
+            <td>{{m.capacity}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+<br>
+<a href="{% url 'bookticket:bookTicket_Index' %}">Return</a>
 </body>
 </html>
