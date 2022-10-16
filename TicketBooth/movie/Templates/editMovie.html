@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Movies</title>
-     <style>
-    body {
+      <style>
+   body {
             background: #fff7b7;
             display: flex;
             align-items: center;
@@ -56,16 +56,31 @@
 a:hover, a:active {
   background-color: #ffd084;
 }
+table, th, td {
+  border: 2px solid #000;
+  text-align: center;
+  }
+table {
+  border-collapse: collapse;
+  width: 65%;
+}
+th, td {
+  padding: 10px;
+}
+th {
+  background: #5c4848;
+  border: 2px solid #000;
+  color: #fff;
+}
+
 </style>
 </head>
-<body bgcolor="#121212">
-<div align="center">
-  <h1>Movies</h1>
-  <a href="{% url 'movie:add_movie' %}"> Add New Movie </a>
-    <br>
-    <br>
-    <a href="{% url 'movie:movielistA' %}"> Display Movies </a>
-</div>
-
+<body>
+    <form method="post">
+         {% csrf_token %}
+         {{editmovie.as_p}}
+         <input href="{% url 'movie:movielistA' %}" style="font-size:18px" type="submit" onclick="return confirm('Save changes?')" value="Update">
+        <input href="{% url 'movie:movielistA' %}" style="font-size:18px" type="submit" value="Cancel">
+    </form>
 </body>
 </html>

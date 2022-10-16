@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Movies</title>
-     <style>
-    body {
+  <style>
+   body {
             background: #fff7b7;
             display: flex;
             align-items: center;
@@ -56,16 +56,55 @@
 a:hover, a:active {
   background-color: #ffd084;
 }
+table, th, td {
+  border: 2px solid #000;
+  text-align: center;
+  }
+table {
+  border-collapse: collapse;
+  width: 65%;
+}
+th, td {
+  padding: 10px;
+}
+th {
+  background: #5c4848;
+  border: 2px solid #000;
+  color: #fff;
+}
+
 </style>
 </head>
-<body bgcolor="#121212">
-<div align="center">
-  <h1>Movies</h1>
-  <a href="{% url 'movie:add_movie' %}"> Add New Movie </a>
-    <br>
-    <br>
-    <a href="{% url 'movie:movielistA' %}"> Display Movies </a>
-</div>
-
+<body>
+  <h1>Movies Available</h1>
+  <table border="1", cellspacing="2">
+    <tr>
+      <th>Title</th>
+      <th>Room Number</th>
+      <th>Date Available</th>
+      <th>Time</th>
+      <th>Room Type</th>
+      <th>Price</th>
+      <th>Capacity</th>
+      <th>Actions</th>
+    </tr>
+    {% for m in Movie %}
+    <tr>
+      <td>{{m.title}}</td>
+      <td>{{m.roomNum}}</td>
+      <td>{{m.dateAvailable}}</td>
+      <td>{{m.timeAired}}</td>
+      <td>{{m.roomType}}</td>
+      <td>{{m.price}}</td>
+      <td>{{m.capacity}}</td>
+      <td><a href="{% url 'movie:editmovie' m.movieID %}">Edit</a>
+          <a href="{% url 'movie:deletemovie' m.movieID %} " onclick="return confirm('Are you sure you want to delete this movie?')">Delete</a>
+      </td>
+    </tr>
+    {% endfor %}
+  </table>
+  <br> <br>
+  </center>
+  <a href="{% url 'movie:movie_index' %}">Home</a>
 </body>
 </html>
