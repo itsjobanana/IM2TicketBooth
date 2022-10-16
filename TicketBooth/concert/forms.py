@@ -22,6 +22,12 @@ class ConcertForm(ModelForm):
         self.fields['concertDate'].label = "Concert Date"
         self.fields['timeStart'].label = "Time"
         self.fields['seatType'].label = "Seat Type"
+        self.fields['concertName'].required = True
+        self.fields['artist'].required = True
+        self.fields['venue'].required = True
+        self.fields['timeStart'].required = True
+        self.fields['price'].required = True
+        self.fields['capacity'].required = True
 
     class Meta:
         model = Concert

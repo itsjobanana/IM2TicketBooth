@@ -8,7 +8,7 @@
             background: #fff7b7;
             display: flex;
             align-items: center;
-            height: 100vh;
+            height: 150vh;
             flex-direction: column;
         }
         *{
@@ -60,7 +60,10 @@ a:hover, a:active {
 </head>
 <body>
     <h1>CONCERT</h1>
+    USERNAME: &nbsp;{{request.session.username}} <br>
+    TYPE: &nbsp;{{request.session.type}} <br> <br>
     <a href="{% url 'concert:createConcert' %}" >Add New Concert</a> <br> <br>
-    <a href="{% url 'concert:displayEdit' %}" >Edit and Delete Concerts</a>
+    <a href="{% url 'concert:displayEdit' %}" >Edit and Delete Concerts</a> <br> <br>
+    <a href="{% url 'registration:index' %}" >BACK</a>
 </body>
 </html>

@@ -1,5 +1,6 @@
 from django.db import models
-
+from django.core.validators import MinValueValidator
+import datetime
 # Create your models here.
 
 class User(models.Model):
@@ -37,9 +38,10 @@ class Specialization(models.Model):
 class Concert(models.Model):
     type_seat = (('V', 'VIP'), ('R', 'Regular'))
     concertID = models.AutoField(primary_key=True)
-    title = models.CharField(max_length=50, null=False)
+    concertName = models.CharField(max_length=50, null=False)
+    artist = models.CharField(max_length=50, null=False)
     venue = models.CharField(max_length=50, null=False)
-    concertDate = models.DateField()
+    concertDate = models.DateField(validators=[MinValueValidator(datetime.date.today)])
     timeStart = models.TimeField()
     seatType = models.CharField(max_length=10, choices=type_seat)
     price = models.FloatField(null=False)
@@ -47,7 +49,10 @@ class Concert(models.Model):
     user = models.ManyToManyField(Customer, related_name='attend', through='BookingC')
 
     def __str__(self):
-        return self.title +', Date of Event: '+str(self.concertDate)
+        return self.concertName +', Date of Event: '+str(self.concertDate)+' '+self.concertID
+
+    class Meta:
+        unique_together = ('concertName', 'artist', 'venue', 'concertDate', 'timeStart', 'seatType', 'price', 'capacity')
 
 
 class Movie(models.Model):
