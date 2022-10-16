@@ -12,7 +12,7 @@ class CustomerForm(ModelForm):
     middlename = forms.CharField(widget=forms.TextInput())
     lastname = forms.CharField(widget=forms.TextInput())
     address = forms.CharField(widget=forms.TextInput())
-    type = 'U'
+    type = 'T'
 
 
     def __init__(self, *args, **kwargs):
@@ -23,7 +23,7 @@ class CustomerForm(ModelForm):
 
     class Meta:
         model = Customer
-        fields = ['username', 'password', 'firstname', 'middlename', 'lastname','address']
+        fields = ['username', 'password', 'firstname', 'middlename', 'lastname','address', 'type']
 
 
 class AdminForm(ModelForm):
