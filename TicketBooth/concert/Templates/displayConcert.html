@@ -3,34 +3,101 @@
 <head>
     <meta charset="UTF-8">
     <title>Concerts</title>
-</head>
-<style>
-.content{
-  max-width: 250px;
-  margin: 50px;
+  <style>
+   body {
+            background: #fff7b7;
+            display: flex;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+        *{
+            font-family: Tahoma, sans-serif;
+            box-sizing: border-box;`
+        }
+    form {
+            width: 550px;
+            border: 3px solid #000;
+            padding: 30px;
+            background: #ffa656;
+            border-radius: 20px;
+        }
+     h1 {
+            text-align: center;
+            margin-bottom: 40px;
+            color: #5c4848;
+        }
+            input {
+            display: block;
+            border: 2px solid #000;
+            width: 90%;
+            padding: 10px;
+            margin: 5px auto;
+            border-radius: 10px;
+        }
+    button {
+            float: right;
+            background: #a0654d;
+            padding: 10px 15px;
+            color: #fff;
+            border-radius: 30px;
+            margin-right: 20px;
+            border: none;
+        }
+    a:link, a:visited {
+  background-color: #a0654d;
+  color: white;
+  padding: 14px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
 }
+
+a:hover, a:active {
+  background-color: #ffd084;
+}
+table, th, td {
+  border: 2px solid #5c4848;
+  text-align: center;
+  }
+table {
+  border-collapse: collapse;
+  width: 65%;
+}
+th, td {
+  padding: 10px;
+}
+
 </style>
+</head>
 <body>
-<center>
   <h1>CONCERTS</h1>
   <table border="1", cellspacing="2">
     <tr>
-      <th>Title</th>
+      <th>Concert Name</th>
+      <th>Artist</th>
       <th>Venue</th>
       <th>Date</th>
       <th>Time</th>
+      <th>Seat Type</th>
+      <th>Price</th>
     </tr>
     {% for c in Concert %}
     <tr>
-      <td>{{c.title}}</td>
+      <td>{{c.concertName}}</td>
+      <td>{{c.artist}}</td>
       <td>{{c.venue}}</td>
       <td>{{c.concertDate}}</td>
       <td>{{c.timeStart}}</td>
+      <td>{{c.seatType}}</td>
+      <td>{{c.price}}</td>
     </tr>
     {% endfor %}
   </table>
-  <br>
-      <a href="{% url 'concert:concertIndex' %}"><input type="submit" value="Back"/> </a>
-</center>
+  <br> <br>
+  <center>
+      <a href="#">Book Concert</a> &nbsp; &nbsp; &nbsp;
+      <a href="{% url 'concert:displayEdit' %}">Update/Delete</a> &nbsp; &nbsp; &nbsp;
+      <a href="{% url 'concert:concertIndex' %}">HOME</a> </center>
 </body>
 </html>

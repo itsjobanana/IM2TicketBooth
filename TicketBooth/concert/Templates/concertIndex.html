@@ -3,23 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <title>Concert Booking</title>
-</head>
-<style>
-.content{
-  max-width: 300px;
-  margin: 50px;
+    <style>
+    body {
+            background: #fff7b7;
+            display: flex;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+        *{
+            font-family: Tahoma, sans-serif;
+            box-sizing: border-box;`
+        }
+    form {
+            width: 550px;
+            border: 3px solid #000;
+            padding: 30px;
+            background: #ffa656;
+            border-radius: 20px;
+        }
+     h1 {
+            text-align: center;
+            margin-bottom: 40px;
+            color: #5c4848;
+        }
+            input {
+            display: block;
+            border: 2px solid #000;
+            width: 90%;
+            padding: 10px;
+            margin: 5px auto;
+            border-radius: 10px;
+        }
+    button {
+            float: right;
+            background: #a0654d;
+            padding: 10px 15px;
+            color: #fff;
+            border-radius: 30px;
+            margin-right: 20px;
+            border: none;
+        }
+    a:link, a:visited {
+  background-color: #a0654d;
+  color: white;
+  padding: 14px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+
+a:hover, a:active {
+  background-color: #ffd084;
 }
 </style>
+</head>
 <body>
-    <center>
-<div class="content">
-  <p>
     <h1>CONCERT</h1>
-  </p>
-    <a href="{% url 'concert:createConcert' %}">Add New Concert</a> <br> <br>
-    <a href="{% url 'concert:displayConcert' %}">Display Concerts</a> <br> <br>
-    <a href="{% url 'concert:displayEdit' %}"> Edit and Delete Concerts</a>
-</div>
-    </center>
+    <a href="{% url 'concert:createConcert' %}" >Add New Concert</a> <br> <br>
+    <a href="{% url 'concert:displayConcert' %}" >Display Concerts</a> <br> <br>
+    <a href="{% url 'concert:displayEdit' %}" >Edit and Delete Concerts</a>
 </body>
 </html>
