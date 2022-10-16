@@ -24,6 +24,11 @@ class CustomerForm(ModelForm):
         self.instance.type = self.type
         self.fields['password'].required = False
 
+    def __init__(self, *args, **kwargs):
+        super(CustomerForm, self).__init__(*args, **kwargs)
+        self.instance.type = self.type
+        self.fields['type'].required = False
+
     def clean_password(self):
         password = self.data.get('password')
         if len(password) < 8:
