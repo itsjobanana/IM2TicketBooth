@@ -65,7 +65,7 @@ class BookingM(models.Model):
     username = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
-        return str(self.bookingID)
+        return 'Booking ID: ' + str(self.bookingID)
 
 
 class BookingC(models.Model):
@@ -75,7 +75,7 @@ class BookingC(models.Model):
     username = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
-        return str(self.bookingID)
+        return 'Booking ID: ' + str(self.bookingID)
 
 
 class TicketM(models.Model):
