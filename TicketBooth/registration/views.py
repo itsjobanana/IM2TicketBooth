@@ -17,7 +17,7 @@ class HomeView(View):
         return render(request, self.template)
 
 
-class RegisterCustomer(View):
+class RegisterUser(View):
     template = 'createCustomer.html'
 
     def get(self, request):
@@ -30,7 +30,6 @@ class RegisterCustomer(View):
             form.save()
             return redirect(reverse('registration:index'))
         return render(request, self.template, {'form': form})
-
 
 class Login(View):
     template = 'login.html'

@@ -6,7 +6,7 @@ import datetime
 class User(models.Model):
     type_user = (('U', 'User'), ('A', 'Admin'))
     username = models.CharField(max_length=15, null=False, primary_key=True)
-    password = models.CharField(max_length=10, null=False)
+    password = models.CharField(max_length=15, null=False)
     firstname = models.CharField(max_length=50, null=False)
     middlename = models.CharField(max_length=50, null=True)
     lastname = models.CharField(max_length=50, null=False)
@@ -25,14 +25,6 @@ class Admin(User):
 
     def __str__(self):
         self.firstname +" "+self.lastname
-
-
-class Specialization(models.Model):
-    admin = models.ForeignKey(Admin, on_delete=models.CASCADE)
-    specialization = models.CharField(max_length=50)
-
-    class Meta:
-        unique_together = ('admin', 'specialization')
 
 
 class Concert(models.Model):

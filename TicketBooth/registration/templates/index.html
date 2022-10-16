@@ -65,12 +65,13 @@ a:hover, a:active {
     {% if request.session.username != '' and request.session.type == 'U'%}
         <a href="{% url 'registration:concertmovie' %}">Choose Concert or Movie</a>
         <a href="{% url 'registration:editProfile' %}">Edit Profile</a>
-        <a href="{% url 'registration:logoff' %}">Log Off</a>
+        <a href="{% url 'registration:logout' %}">Log Out</a>
     {%elif request.session.username != '' and request.session.type == 'A' %}
         <a href="{% url 'concert:concertIndex' %}">Concert</a>
         <a href="{% url 'registration:editProfile' %}">Edit Profile</a>
-        <a href="{% url 'registration:logoff' %}">Log Off</a>
+        <a href="{% url 'registration:logout' %}">Log Out</a>
     {% else %}
         <a href="{% url 'registration:login' %}">Login</a>
-        <a href="{% url 'registration:create_customer' %}">Add</a>
+        <a href="{% url 'registration:create_customer' %}">ADD</a>
+
     {% endif %}
