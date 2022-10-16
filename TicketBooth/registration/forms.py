@@ -1,7 +1,7 @@
 from django.core.exceptions import ValidationError
 from django.forms import ModelForm
 from django import forms
-from .models import *
+from .models import Customer, Admin
 
 
 class CustomerForm(ModelForm):
@@ -13,41 +13,11 @@ class CustomerForm(ModelForm):
     address = forms.CharField(widget=forms.TextInput())
     type = 'T'
 
-
     def __init__(self, *args, **kwargs):
         super(CustomerForm, self).__init__(*args, **kwargs)
         self.instance.type = self.type
-        self.fields['username'].required = False
+        self.fields['middlename'].required = False
 
-    def __init__(self, *args, **kwargs):
-        super(CustomerForm, self).__init__(*args, **kwargs)
-        self.instance.type = self.type
-        self.fields['password'].required = False
-
-    def __init__(self, *args, **kwargs):
-        super(CustomerForm, self).__init__(*args, **kwargs)
-        self.instance.type = self.type
-        self.fields['type'].required = True
-
-    def __init__(self, *args, **kwargs):
-        super(CustomerForm, self).__init__(*args, **kwargs)
-        self.instance.type = self.type
-        self.fields['firstname'].required = True
-
-    def __init__(self, *args, **kwargs):
-        super(RegisterForm, self).__init__(*args, **kwargs)
-        self.instance.type = self.type
-        self.fields['middleName'].required = False
-
-    def __init__(self, *args, **kwargs):
-        super(CustomerForm, self).__init__(*args, **kwargs)
-        self.instance.type = self.type
-        self.fields['lastname'].required = True
-
-    def __init__(self, *args, **kwargs):
-        super(CustomerForm, self).__init__(*args, **kwargs)
-        self.instance.type = self.type
-        self.fields['address'].required = True
 
     def clean_password(self):
         password = self.data.get('password')
