@@ -54,7 +54,7 @@ class EditConcert(View):
         form = EditConcertForm(request.POST, instance=concert)
         if form.is_valid:
             form.save()
-        return redirect(reverse('index.html'))
+        return redirect(reverse('concert:displayEdit'))
 
 
 class DisplayConcert(View):
