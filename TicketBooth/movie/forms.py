@@ -1,5 +1,7 @@
+import datetime
+
 from django.core.exceptions import ValidationError
-from django.forms import ModelForm
+from django.forms import ModelForm, fields
 from django import forms
 
 from registration.models import Movie
@@ -18,9 +20,14 @@ class MovieForm(ModelForm):
     price = forms.IntegerField(widget=forms.Select(choices=price_choice))
     capacity = forms.IntegerField(widget=forms.NumberInput)
 
+    def __init__(self, *args, **kwargs):
+        super(MovieForm, self).__init__(*args, *kwargs)
+
     class Meta:
         model = Movie
         fields = ['title', 'roomNum', 'dateAvailable', 'timeAired', 'roomType', 'price', 'capacity']
+
+
 
 class EditMovieForm(ModelForm):
     title = forms.CharField(widget=forms.TextInput)
@@ -34,4 +41,8 @@ class EditMovieForm(ModelForm):
     class Meta:
         model = Movie
         fields = ['title', 'roomNum', 'dateAvailable', 'timeAired', 'roomType', 'price', 'capacity']
+
+
+
+
 

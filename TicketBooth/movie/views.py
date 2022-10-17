@@ -1,8 +1,12 @@
+import datetime
+
+from django.core.exceptions import ValidationError
 from django.shortcuts import render, redirect
 
 # Create your views here.
 
 from django.shortcuts import render
+from django.template.defaultfilters import title
 from django.urls import reverse
 from django.views import View
 
@@ -25,12 +29,13 @@ class addMovie(View):
         form = MovieForm()
         return render(request, self.template, {'form': form})
 
-
     def post(self, request):
         form = MovieForm(request.POST)
         if form.is_valid():
             form.save()
         return render(request, "success.html")
+
+
 
 class MovieList(View):
     template = 'movielistA.html'
@@ -38,6 +43,7 @@ class MovieList(View):
     def get(self, request):
         movielist = Movie.objects.all()
         return render(request, self.template, {'Movie': movielist})
+
 
 class MovieListU(View):
     template = 'movielistU.html'
