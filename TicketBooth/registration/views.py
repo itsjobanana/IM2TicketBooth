@@ -66,46 +66,26 @@ class EditProfile(View):
     template = 'editProfile.html'
 
     def get(self, request):
-            if request.session['type'] == 'U':
-                customer = Customer.objects.get(pk=request.session['username'])
-                form = CustomerForm(instance=customer)
-
-            else:
-                admin = Admin.objects.get(pk=request.session['username'])
-                form = AdminForm(instance=admin)
-            return render(request, self.template,{'form':form})
-
-    def post(self,request):
         if request.session['type'] == 'U':
             customer = Customer.objects.get(pk=request.session['username'])
-            form = CustomerForm(request.POST,instance=customer)
+            form = CustomerForm(instance=customer)
+
         else:
             admin = Admin.objects.get(pk=request.session['username'])
-            form = AdminForm(request.POST,instance=admin)
-        if form.is_valid:
-            form.save()
-        return render(request, 'index.html')
+            form = AdminForm(instance=admin)
+        return render(request, self.template, {'form': form})
 
-    def get(self, request):
-            if request.session['type'] == 'A':
-                customer = Customer.objects.get(pk=request.session['username'])
-                form = CustomerForm(instance=customer)
 
-            else:
-                admin = Admin.objects.get(pk=request.session['username'])
-                form = AdminForm(instance=admin)
-            return render(request, self.template,{'form':form})
-
-    def post(self,request):
-        if request.session['type'] == 'A':
+    def post(self, request):
+        if request.session['type'] == 'U':
             customer = Customer.objects.get(pk=request.session['username'])
-            form = CustomerForm(request.POST,instance=customer)
+            form = CustomerForm(request.POST, instance=customer)
         else:
             admin = Admin.objects.get(pk=request.session['username'])
-            form = AdminForm(request.POST,instance=admin)
+            form = AdminForm(request.POST, instance=admin)
         if form.is_valid:
             form.save()
-        return render(request, 'index.html')
+            return render(request, 'index.html')
 
 
 class ChooseView(View):
