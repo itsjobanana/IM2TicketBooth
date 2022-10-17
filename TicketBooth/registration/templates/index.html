@@ -75,11 +75,9 @@ a:hover, a:active {
     <br>
         <a href="{% url 'movie:movie_index' %}">Movie</a>
     <br>
-        <a href="{% url 'registration:editProfile' %}">Edit Profile</a>
-    <br>
         <a href="{% url 'registration:logout' %}">Log Off</a>
     {% else %}
-<br>
+    <br>
         <a href="{% url 'registration:login' %}">Login</a>
     <br>
     <br>
