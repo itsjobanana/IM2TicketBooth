@@ -70,6 +70,7 @@ a:hover, a:active {
     <br>
         <a href="{% url 'registration:logoff' %}">Log Off</a>
     {%elif request.session.username != '' and request.session.type == 'A' %}
+    <br>
         <a href="{% url 'concert:concertIndex' %}">Concert</a>
     <br>
         <a href="{% url 'movie:movie_index' %}">Movie</a>
